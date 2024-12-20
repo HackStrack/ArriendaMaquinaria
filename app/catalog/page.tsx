@@ -10,6 +10,8 @@ import Footer from '@/components/sections/footer-section';
 export default function CatalogPage() {
   const { filteredProducts, filters, updateFilters } = useProductFilters();
 
+
+  
   return (
     <>
       <Navbar />
