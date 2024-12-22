@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,15 +10,33 @@ export function Navbar() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Calcula la altura del navbar para el padding
+  const [navbarHeight, setNavbarHeight] = useState(0);
+  useEffect(() => {
+    const navbarElement = document.querySelector('nav');
+    if (navbarElement) {
+      setNavbarHeight(navbarElement.offsetHeight);
+    }
+
+    // Añade un padding-top al body igual a la altura del navbar
+    document.body.style.paddingTop = `${navbarHeight}px`;
+
+    return () => {
+      // Limpia el padding-top cuando el componente se desmonte
+      document.body.style.paddingTop = '';
+    };
+  }, [navbarHeight]);
+
   return (
-    <nav className="bg-[#1e293b] py-4 px-4 md:px-8 lg:px-8 text-white">
+<nav className="fixed top-0 w-full z-50 bg-[#1e293b] py-4 px-4 md:px-8 lg:px-8 text-white">
+      {/* Resto del código de tu navbar */}
       <div className="container mx-auto flex justify-between items-center flex-wrap">
         <Link href="/">
-          <Image 
-            src="https://arriendamaquinaria.cl/wp-content/uploads/2024/03/cropped-MaqrriendaTheNewLogoOfHope.png" 
-            alt="AriendaMaquinaria" 
-            width={150} 
-            height={50} 
+          <Image
+            src="https://arriendamaquinaria.cl/wp-content/uploads/2024/03/cropped-MaqrriendaTheNewLogoOfHope.png"
+            alt="AriendaMaquinaria"
+            width={150}
+            height={50}
             style={{ objectFit: 'contain', width: 'auto', height: '40px' }} // Ajustes aquí
           />
         </Link>
