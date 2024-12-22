@@ -4,7 +4,6 @@ import { Button } from './button';
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -13,7 +12,6 @@ import {
 interface MachineCardProps {
   image: string;
   title: string;
-  description: string;
   price: string;
   onQuote: () => void;
 }
@@ -21,7 +19,6 @@ interface MachineCardProps {
 export function MachineCard({
   image,
   title,
-  description,
   price,
   onQuote,
 }: MachineCardProps) {
@@ -36,8 +33,10 @@ export function MachineCard({
           />
         </div>
         <div className="p-6">
-          <CardTitle className="text-[#1e293b] text-xl">{title}</CardTitle>
-          <CardDescription className="text-[#64748b] h-12">{description}</CardDescription>
+          {/* Altura fija y manejo de texto largo */}
+          <CardTitle className="text-[#1e293b] text-xl h-14 overflow-hidden">
+            {title}
+          </CardTitle>
         </div>
       </CardHeader>
       <CardContent>
