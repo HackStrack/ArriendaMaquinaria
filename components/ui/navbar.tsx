@@ -16,10 +16,10 @@ export function Navbar() {
         <Link href="/">
           <Image 
             src="https://arriendamaquinaria.cl/wp-content/uploads/2024/03/cropped-MaqrriendaTheNewLogoOfHope.png" 
-            alt="MaquiRent Logo" 
+            alt="AriendaMaquinaria" 
             width={150} 
             height={50} 
-            style={{ objectFit: 'contain', width: 'auto', height: '50px' }} // Ajustes aquí
+            style={{ objectFit: 'contain', width: 'auto', height: '40px' }} // Ajustes aquí
           />
         </Link>
 
